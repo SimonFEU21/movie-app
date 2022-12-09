@@ -3,7 +3,7 @@ import {
   fetchMovies,
   fetchGenre,
   fetchMovieByGenre,
-  fetchPersons,
+  // fetchPersons,
   fetchTopratedMovie,
 } from "../../service";
 import RBCarousel from "react-bootstrap-carousel";
@@ -15,7 +15,7 @@ export function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [genres, setGenres] = useState([]);
   const [movieByGenre, setMovieByGenre] = useState([]);
-  const [persons, setPersons] = useState([]);
+  // const [persons, setPersons] = useState([]);
   const [topRated, setTopRated] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export function Home() {
       setNowPlaying(await fetchMovies());
       setGenres(await fetchGenre());
       setMovieByGenre(await fetchMovieByGenre(28));
-      setPersons(await fetchPersons());
+      // setPersons(await fetchPersons());
       setTopRated(await fetchTopratedMovie());
     };
 
@@ -82,34 +82,34 @@ export function Home() {
         <div className="mt-3">
           <p style={{ fontWeight: "bolder" }}>{item.title}</p>
           <p>Rated: {item.rating}</p>
-          <ReactStars
+          {/* <ReactStars
             count={item.rating}
             size={20}
             color1={"#f4c10f"}
-          ></ReactStars>
+          ></ReactStars> */}
         </div>
       </div>
     );
   });
 
-  const trendingPersons = persons.slice(0, 4).map((p, i) => {
-    return (
-      <div className="col-md-3 text-center" key={i}>
-        <img
-          className="img-fluid rounded-circle mx-auto d-block"
-          src={p.profileImg}
-          alt={p.name}
-        ></img>
-        <p className="font-weight-bold text-center">{p.name}</p>
-        <p
-          className="font-weight-light text-center"
-          style={{ color: "#5a606b" }}
-        >
-          Trending for {p.known}
-        </p>
-      </div>
-    );
-  });
+  // const trendingPersons = persons.slice(0, 4).map((p, i) => {
+  //   return (
+  //     <div className="col-md-3 text-center" key={i}>
+  //       <img
+  //         className="img-fluid rounded-circle mx-auto d-block"
+  //         src={p.profileImg}
+  //         alt={p.name}
+  //       ></img>
+  //       <p className="font-weight-bold text-center">{p.name}</p>
+  //       <p
+  //         className="font-weight-light text-center"
+  //         style={{ color: "#5a606b" }}
+  //       >
+  //         Trending for {p.known}
+  //       </p>
+  //     </div>
+  //   );
+  // });
 
   const topRatedList = topRated.slice(0, 4).map((item, index) => {
     return (
@@ -122,11 +122,11 @@ export function Home() {
         <div className="mt-3">
           <p style={{ fontWeight: "bolder" }}>{item.title}</p>
           <p>Rated: {item.rating}</p>
-          <ReactStars
+          {/* <ReactStars
             count={item.rating}
             size={20}
             color1={"#f4c10f"}
-          ></ReactStars>
+          ></ReactStars> */}
         </div>
       </div>
     );
@@ -163,13 +163,13 @@ export function Home() {
       </div>
       <div className="row mt-3">{movieList}</div>
 
-      <div className="row mt-3">
+      {/* <div className="row mt-3">
         <div className="col">
           <p className="font-weight-bold" style={{ color: "#5a606b" }}>
             TRENDING PERSONS ON THIS WEEK
           </p>
         </div>
-      </div>
+      </div> */}
 
       <div className="row mt-3">
         <div className="col">
@@ -178,7 +178,7 @@ export function Home() {
           </div>
         </div>
       </div>
-      <div className="row mt-3">{trendingPersons}</div>
+      {/* <div className="row mt-3">{trendingPersons}</div> */}
 
       <div className="row mt-3">
         <div className="col">
@@ -200,7 +200,7 @@ export function Home() {
       <hr className="mt-5" style={{ borderTop: "1px solid #5a606b" }}></hr>
 
       <div className="row mt-3 mb-5">
-        <div className="col-md-8 col-sm-6" style={{ color: "#5a606b" }}>
+        {/* <div className="col-md-8 col-sm-6" style={{ color: "#5a606b" }}>
           <h3>ABOUT ME</h3>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
@@ -265,7 +265,7 @@ export function Home() {
               </p>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );
