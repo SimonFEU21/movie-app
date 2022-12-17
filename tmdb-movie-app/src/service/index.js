@@ -1,17 +1,17 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const apiKey = 'd4da566d6202b6238607a02cf39337cf';
 const url = 'https://api.themoviedb.org/3';
 const nowPlayingUrl = `${url}/movie/now_playing`;
-const topratedUrl = `${url}/movie/top_rated`;
+const topratedUrl = `${url}/movie/popular`;
 const movieUrl = `${url}/movie`;
 const genreUrl = `${url}/genre/movie/list`;
-const moviesUrl = `${url}/discover/movie`;
-const personUrl = `${url}/trending/person/week`;
+const discoverUrl = `${url}/discover/movie`;
+const trendingUrl = `${url}/trending`;
 
 export const fetchMovies = async () => {
     try {
-        const { data } = await axios.get(nowPlayingUrl, {
+        const res = await axios.get(nowPlayingUrl, {
             params: {
                 api_key: apiKey,
                 language: 'en_US',
@@ -19,8 +19,11 @@ export const fetchMovies = async () => {
             }
         })
 
+
+       
+
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
-        const modifiedData = data['results'].map((m) => ({
+        const modifiedData = res.data.results.map((m) => ({
             id: m['id'],
             backPoster: posterUrl + m['backdrop_path'],
             popularity: m['popularith'],
@@ -33,6 +36,35 @@ export const fetchMovies = async () => {
         return modifiedData;
     } catch (error) { }
 }
+
+
+
+
+
+export const fetchDiscoverUrl = async () => {
+    try {
+        const { data } = await axios.get(discoverUrl, {
+            params: {
+                api_key: apiKey
+            }
+        })
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: trendingUrl + m['backdrop_path'],
+            popularity: m['popularith'],
+            title: m['title'],
+            poster: trendingUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
+        }))
+        return modifiedData;
+    } catch (error) { }
+}
+
+
+
+
+
 
 export const fetchGenre = async () => {
     try {
@@ -53,7 +85,7 @@ export const fetchGenre = async () => {
 
 export const fetchMovieByGenre = async (genre_id) => {
     try {
-        const { data } = await axios.get(moviesUrl, {
+        const { data } = await axios.get(movieUrl, {
             params: {
                 api_key: apiKey,
                 language: 'en_US',
@@ -76,19 +108,21 @@ export const fetchMovieByGenre = async (genre_id) => {
     } catch (error) { }
 }
 
-export const fetchPersons = async () => {
+export const fetchTrending = async () => {
     try {
-        const { data } = await axios.get(personUrl, {
+        const { data } = await axios.get(trendingUrl, {
             params: {
                 api_key: apiKey
             }
         })
-        const modifiedData = data['results'].map((p) => ({
-            id: p['id'],
-            popularity: p['popularity'],
-            name: p['name'],
-            profileImg: 'https://image.tmdb.org/t/p/w200' + p['profile_path'],
-            known: p['known_for_department']
+        const modifiedData = data['results'].map((m) => ({
+            id: m['id'],
+            backPoster: trendingUrl + m['backdrop_path'],
+            popularity: m['popularith'],
+            title: m['title'],
+            poster: trendingUrl + m['poster_path'],
+            overview: m['overview'],
+            rating: m['vote_average'],
         }))
         return modifiedData;
     } catch (error) { }
@@ -132,16 +166,17 @@ export const fetchMovieDetail = async (id) => {
     } catch (error) { }
 }
 
-export const fetchMovieVideos = async (id) => {
-    try {
-        const { data } = await axios.get(`${movieUrl}/${id}/videos`, {
-            params: {
-                api_key: apiKey,
-            }
-        });
-        return data['results'][0];
-    } catch (error) { }
-}
+// const { data } = await axios.get(`${movieUrl}/${id}`, {
+    export const fetchMovieVideos = async (id) => {
+        try {
+            const { data } = await axios.get(`${movieUrl}/${id}/videos`, {
+                params: {
+                    api_key: apiKey,
+                }
+            });
+            return data['results'][0];
+        } catch (error) { }
+    }
 
 export const fetchCasts = async (id) => {
     try {

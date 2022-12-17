@@ -1,22 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { fetchMovieDetail, fetchMovieVideos } from "../../service/";
+import { fetchMovieDetail, fetchMovieVideos, fetchDiscoverUrl } from "../../service/";
 
-import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
-import { Modal } from "react-bootstrap";
-// import ReactStars from "react-rating-stars-component";
-import { useParams } from "react-router-dom";
-// import { Link } from "react-router-dom";
-import ReactPlayer from "react-player";
-// import YouTube from "react-youtube";
+
 
 export function MovieDetail() {
   // const params = match.params;
   const params = useParams();
   let genres = [];
-  const [isOpen, setIsOpen] = useState(false);
   const [detail, setDetail] = useState([]);
   const { video, setVideo } = useState([]);
+  const { discover, setDiscover } = useState([]);
+
   // const [casts, setCasts] = useState([]);
   // const [similarMovie, setSimilarMovie] = useState([]);
 
@@ -24,12 +19,13 @@ export function MovieDetail() {
     const fetchAPI = async () => {
       setDetail(await fetchMovieDetail(params.id));
       setVideo(await fetchMovieVideos(params.id));
+      setDiscover(await fetchDiscoverUrl(params.id));
       // setCasts(await fetchCasts(params.id));
       // setSimilarMovie(await fetchSimilarMovie(params.id));
     };
 
     fetchAPI();
-  }, [setVideo, params.id]);
+  }, [setVideo, setDiscover, params.id]);
 
   genres = detail.genres;
 
