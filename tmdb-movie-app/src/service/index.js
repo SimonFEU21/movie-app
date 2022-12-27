@@ -7,7 +7,7 @@ const topratedUrl = `${url}/movie/popular`;
 const movieUrl = `${url}/movie`;
 const genreUrl = `${url}/genre/movie/list`;
 const discoverUrl = `${url}/discover/movie`;
-const trendingUrl = `${url}/trending`;
+const trendingUrl = `${url}/trending/all/week`;
 
 export const fetchMovies = async () => {
     try {
@@ -48,12 +48,13 @@ export const fetchDiscoverUrl = async () => {
                 api_key: apiKey
             }
         })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
         const modifiedData = data['results'].map((m) => ({
             id: m['id'],
-            backPoster: trendingUrl + m['backdrop_path'],
+            backPoster: posterUrl + m['backdrop_path'],
             popularity: m['popularith'],
             title: m['title'],
-            poster: trendingUrl + m['poster_path'],
+            poster: posterUrl + m['poster_path'],
             overview: m['overview'],
             rating: m['vote_average'],
         }))
@@ -115,12 +116,13 @@ export const fetchTrending = async () => {
                 api_key: apiKey
             }
         })
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
         const modifiedData = data['results'].map((m) => ({
             id: m['id'],
-            backPoster: trendingUrl + m['backdrop_path'],
+            backPoster: posterUrl + m['backdrop_path'],
             popularity: m['popularith'],
             title: m['title'],
-            poster: trendingUrl + m['poster_path'],
+            poster: posterUrl + m['poster_path'],
             overview: m['overview'],
             rating: m['vote_average'],
         }))

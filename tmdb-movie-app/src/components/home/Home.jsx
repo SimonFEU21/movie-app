@@ -12,7 +12,7 @@ import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
 // import ReactStars from "react-rating-stars-component";
 
-export function Home() {
+function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [trending, setTrending] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -24,8 +24,8 @@ export function Home() {
     const fetchAPI = async () => {
       setNowPlaying(await fetchMovies());
       setTrending(await fetchTrending());
-      // setGenres(await fetchGenre());
-      // setMovieByGenre(await fetchMovieByGenre(28));
+      setGenres(await fetchGenre());
+      setMovieByGenre(await fetchMovieByGenre(28));
       // setPersons(await fetchPersons());
       setTopRated(await fetchTopratedMovie());
     };
@@ -33,12 +33,10 @@ export function Home() {
     fetchAPI();
   }, []);
 
-  console.log(trending);
-
   const handleGenreClick = async (genre_id) => {
     setMovieByGenre(await fetchMovieByGenre(genre_id));
   };
-  console.log(nowPlaying);
+
   // const movies = nowPlaying?.map((item, index) => {
   //   return (
   //     <div style={{ height: 500, width: "100%" }} key={index}>
@@ -126,13 +124,8 @@ export function Home() {
           </Link>
         </div>
         <div className="mt-3">
-          <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-          <p>Rated: {item.rating}</p>
-          {/* <ReactStars
-            count={item.rating}
-            size={20}
-            color1={"#f4c10f"}
-          ></ReactStars> */}
+          <p style={{ color: "white" }}>{item.title} </p>
+          <p style={{ color: "white" }}>Rated: {item.rating}</p>
         </div>
       </div>
     );
@@ -147,13 +140,28 @@ export function Home() {
           </Link>
         </div>
         <div className="mt-3">
-          <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-          <p>Rated: {item.rating}</p>
-          {/* <ReactStars
-            count={item.rating}
-            size={20}
-            color1={"#f4c10f"}
-          ></ReactStars> */}
+          <p style={{ color: "white" }}>{item.title}</p>
+          <p style={{ color: "white" }}>Rated: {item.rating}</p>
+        </div>
+      </div>
+    );
+  });
+
+  const trendingList = trending.slice(0, 4).map((item, index) => {
+    return (
+      <div className="col-md-3" key={index}>
+        <div className="card">
+          <Link to={`/movie/${item.id}`}>
+            <img
+              className="img-fluid"
+              src={item.backPoster}
+              alt={item.title}
+            ></img>
+          </Link>
+        </div>
+        <div className="mt-3">
+          <p style={{ color: "white" }}>{item.title}</p>
+          <p style={{ color: "white" }}>Rated: {item.rating}</p>
         </div>
       </div>
     );
@@ -161,23 +169,28 @@ export function Home() {
 
   return (
     <div className="container">
-      <div className="row mt-5">
+      <input type="text" placeholder="search" />
+      <div className="row mt-3">
         <div className="col">
-          {trending?.map((e) => (
-            <img key={e.id} src={e.poster} alt="" />
-          ))}
+          <div className="float-right">
+            <i className="far fa-arrow-alt-circle-right"></i>
+          </div>
+          <p className="font-weight-bold" style={{ color: "white" }}>
+            TRENDING
+          </p>
+        </div>
+      </div>
+      <div className="row mt-3">{trendingList}</div>
+
+      <div className="row mt-3">
+        <div className="col">
+          {/* <ul className="list-inline">"genreList"</ul> */}
         </div>
       </div>
 
       <div className="row mt-3">
         <div className="col">
-          <ul className="list-inline">"genreList"</ul>
-        </div>
-      </div>
-
-      <div className="row mt-3">
-        <div className="col">
-          <p className="font-weight-bold" style={{ color: "#5a606b" }}>
+          <p className="font-weight-bold" style={{ color: "white" }}>
             NOW PLAYING
           </p>
         </div>
@@ -192,14 +205,6 @@ export function Home() {
       </div>
       <div className="row mt-3">{nowPlayingList}</div>
 
-      {/* <div className="row mt-3">
-        <div className="col">
-          <p className="font-weight-bold" style={{ color: "#5a606b" }}>
-            TRENDING PERSONS ON THIS WEEK
-          </p>
-        </div>
-      </div> */}
-
       <div className="row mt-3">
         <div className="col">
           <div className="float-right">
@@ -211,7 +216,7 @@ export function Home() {
 
       <div className="row mt-3">
         <div className="col">
-          <p className="font-weight-bold" style={{ color: "#5a606b" }}>
+          <p className="font-weight-bold" style={{ color: "white" }}>
             TOP RATED MOVIES
           </p>
         </div>
@@ -226,76 +231,9 @@ export function Home() {
       </div>
       <div className="row mt-3">{topRatedList}</div>
 
-      <hr className="mt-5" style={{ borderTop: "1px solid #5a606b" }}></hr>
-
-      <div className="row mt-3 mb-5">
-        {/* <div className="col-md-8 col-sm-6" style={{ color: "#5a606b" }}>
-          <h3>ABOUT ME</h3>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            error earum perspiciatis praesentium sint ipsum provident blanditiis
-            pariatur necessitatibus voluptas, cum, atque iste eligendi autem,
-            culpa cupiditate placeat facilis repellat.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
-            perspiciatis? Numquam, enim illo voluptatum neque facere aut sed ut
-            dolore nihil? Nulla sit, recusandae ea tenetur rerum deserunt sequi
-            earum?
-          </p>
-          <ul className="list-inline">
-            <li className="list-inline-item">
-              <a href="/" style={{ color: "#f4c10f" }}>
-                <i className="fab fa-facebook"></i>
-              </a>
-            </li>
-            <li className="list-inline-item">
-              <a href="/" style={{ color: "#f4c10f" }}>
-                <i className="fab fa-youtube"></i>
-              </a>
-            </li>
-            <li className="list-inline-item">
-              <a href="/" style={{ color: "#f4c10f" }}>
-                <i className="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li className="list-inline-item">
-              <a href="/" style={{ color: "#f4c10f" }}>
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="col-md-4 col-sm-6" style={{ color: "#5a606b" }}>
-          <h3>KEEP IN TOUCH</h3>
-          <ul className="list-unstyled">
-            <li>
-              <p>
-                <strong>
-                  <i className="fas fa-map-marker-alt"></i> Address:
-                </strong>{" "}
-                city, state, country
-              </p>
-            </li>
-            <li>
-              <p>
-                <strong>
-                  <i className="fas fa-map-marker-alt"></i> Phone:
-                </strong>{" "}
-                +01 00 00 00
-              </p>
-            </li>
-            <li>
-              <p>
-                <strong>
-                  <i className="fas fa-envelope"></i> Email:
-                </strong>{" "}
-                info@infomail.com
-              </p>
-            </li>
-          </ul>
-        </div> */}
-      </div>
+      <hr className="mb-5" style={{ borderTop: "1px solid #5a606b" }}></hr>
     </div>
   );
 }
+
+export default Home;
