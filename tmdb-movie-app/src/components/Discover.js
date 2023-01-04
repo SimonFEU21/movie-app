@@ -9,8 +9,8 @@ const Discover = () => {
   const [genres, setGenres] = useState([]);
   const [movieByGenre, setMovieByGenre] = useState([]);
   const [discover, setDiscover] = useState([]);
-  useEffect(() => {
 
+  useEffect(() => {
     const fetchAPI = async () => {
       setDiscover(await fetchDiscoverUrl());
       setGenres(await fetchGenre());
@@ -41,20 +41,20 @@ const Discover = () => {
       );
     });
 
-    // const movieList = movieByGenre.slice(0, 4).map((item, index) => {
-    //     return (
-    //       <div className="col-md-3 col-sm-6" key={index}>
-    //         <div className="card">
-    //           <Link to={`/movie/${item.id}`}>
-    //             <img className="img-fluid" src={item.poster} alt={item.title}></img>
-    //           </Link>
-    //         </div>
-    //         <div className="mt-3">
-    //           <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-    //         </div>
-    //       </div>
-    //     );
-    //   });
+    const movieList = movieByGenre?.slice(0, 4).map((item, index) => {
+        return (
+          <div className="col-md-3 col-sm-6" key={index}>
+            <div className="card">
+              <Link to={`/movie/${item.id}`}>
+                <img className="img-fluid" src={item.poster} alt={item.title}></img>
+              </Link>
+            </div>
+            <div className="mt-3">
+              <p style={{ fontWeight: "bolder" }}>{item.title}</p>
+            </div>
+          </div>
+        );
+      });
 
 
   const discoverList = discover.slice(0, 4).map((item, index) => {
@@ -86,7 +86,7 @@ const Discover = () => {
           <p className="font-weight-bold" style={{ color: "white" }}>
             Discover
           </p>
-          <ul className style={{ color: "white" }} >
+          <ul style={{ color: "white" }} >
       </ul>
       </div>
 
@@ -98,21 +98,21 @@ const Discover = () => {
       
       <div className="row mt-3">
         <div className="col">
-          <ul className="list-inline">{movieByGenre}</ul>
+          <ul className="list-inline">{}</ul>
         </div>
       </div>
 
   
 
 
-      <div className="row mt-3">
+     <div className="row mt-3">
         <div className="col">
           <div className="float-right">
             <i className="far fa-arrow-alt-circle-right"></i>
           </div>
         </div>
       </div>
-      <div className= "row mt-3" style={{ color: "white" }} >{discoverList} </div>
+      {movieList || ( <div className="row mt-3" style={{ color: "white" }} >{} </div>)}
     </div>
   )
 }

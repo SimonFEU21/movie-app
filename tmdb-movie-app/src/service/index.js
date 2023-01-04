@@ -8,6 +8,7 @@ const movieUrl = `${url}/movie`;
 const genreUrl = `${url}/genre/movie/list`;
 const discoverUrl = `${url}/discover/movie`;
 const trendingUrl = `${url}/trending/all/week`;
+const getGenreUrl = `${url}/discover/movie`;
 
 export const fetchMovies = async () => {
     try {
@@ -86,10 +87,10 @@ export const fetchGenre = async () => {
 
 export const fetchMovieByGenre = async (genre_id) => {
     try {
-        const { data } = await axios.get(movieUrl, {
+        const { data } = await axios.get(getGenreUrl, {
             params: {
                 api_key: apiKey,
-                language: 'en_US',
+                // language: 'en_US',
                 page: 1,
                 with_genres: genre_id
             }
