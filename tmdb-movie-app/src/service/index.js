@@ -9,6 +9,7 @@ const genreUrl = `${url}/genre/movie/list`;
 const discoverUrl = `${url}/discover/movie`;
 const trendingUrl = `${url}/trending/all/week`;
 const getGenreUrl = `${url}/discover/movie`;
+const searchMovieUrl = `${url}/search/movie`;
 
 export const fetchMovies = async () => {
     try {
@@ -32,6 +33,26 @@ export const fetchMovies = async () => {
             poster: posterUrl + m['poster_path'],
             overview: m['overview'],
             rating: m['vote_average'],
+        }))
+
+        return modifiedData;
+    } catch (error) { }
+}
+export const fetchSearchMovieUrl = async (query) => {
+    try {
+        const res = await axios.get(searchMovieUrl, {
+            params: {
+                api_key: apiKey,
+                query
+            }
+        })
+
+        const posterUrl = 'https://image.tmdb.org/t/p/original/';
+        const modifiedData = res.data.results.map((m) => ({
+            id: m['id'],
+            title: m['title'],
+            poster: posterUrl + m['poster_path'],
+
         }))
 
         return modifiedData;
@@ -61,11 +82,8 @@ export const fetchDiscoverUrl = async () => {
         }))
         return modifiedData;
     } catch (error) { }
+
 }
-
-
-
-
 
 
 export const fetchGenre = async () => {
@@ -177,7 +195,11 @@ export const fetchMovieDetail = async (id) => {
                     api_key: apiKey,
                 }
             });
-            return data['results'][0];
+            return data['results'].filter(
+                (item) =>
+                  item.site.toLowerCase() === "youtube" &&
+                  item.type.toLowerCase() === "trailer"
+              )[0];
         } catch (error) { }
     }
 

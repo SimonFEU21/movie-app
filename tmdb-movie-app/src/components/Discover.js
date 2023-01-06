@@ -43,7 +43,7 @@ const Discover = () => {
 
     const movieList = movieByGenre?.slice(0, 4).map((item, index) => {
         return (
-          <div className="col-md-3 col-sm-6" key={index}>
+          <div className="col-md-3" key={index}>
             <div className="card">
               <Link to={`/movie/${item.id}`}>
                 <img className="img-fluid" src={item.poster} alt={item.title}></img>
@@ -57,29 +57,27 @@ const Discover = () => {
       });
 
 
-  const discoverList = discover.slice(0, 4).map((item, index) => {
-    return (
-      <div className="col-md-3" key={index}>
-        <div className="card">
-          <Link to={`/movie/${item.id}`}>
-            <img className="img-fluid" src={item.poster} alt={item.title}></img>
-          </Link>
-        </div>
-        <div className="mt-3">
-          <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-          <p>Rated: {item.rating}</p>
-        </div>
-      </div>
-    );
-  });
+  // const discoverList = discover.slice(0, 4).map((item, index) => {
+  //   return (
+  //     <div className="col-md-3" key={index}>
+  //       <div className="card">
+  //         <Link to={`/movie/${item.id}`}>
+  //           <img className="img-fluid" src={item.poster} alt={item.title}></img>
+  //         </Link>
+  //       </div>
+  //       <div className="mt-3">
+  //         <p style={{ fontWeight: "bolder" }}>{item.title}</p>
+  //         <p>Rated: {item.rating}</p>
+  //       </div>
+  //     </div>
+  //   );
+  // });
 
 
 
 
   return (
     <div className="container">
-      <input type="text" placeholder='search'/>
-     
         <div className="row mt-3">
         <div className="col">
         </div>
@@ -112,7 +110,9 @@ const Discover = () => {
           </div>
         </div>
       </div>
+      <div className='row'>
       {movieList || ( <div className="row mt-3" style={{ color: "white" }} >{} </div>)}
+      </div>
     </div>
   )
 }

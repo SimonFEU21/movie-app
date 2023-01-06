@@ -169,7 +169,7 @@ function Home() {
 
   return (
     <div className="container">
-      <input type="text" placeholder="search" />
+      {/* <input type="text" placeholder="search" /> */}
       <div className="row mt-3">
         <div className="col">
           <div className="float-right">
