@@ -115,41 +115,9 @@ function Home() {
   //   );
   // });
 
-  const topRatedList = topRated.slice(0, 4).map((item, index) => {
+  const trendingList = trending.slice(0, 2).map((item, index) => {
     return (
-      <div className="col-md-3" key={index}>
-        <div className="card">
-          <Link to={`/movie/${item.id}`}>
-            <img className="img-fluid" src={item.poster} alt={item.title}></img>
-          </Link>
-        </div>
-        <div className="mt-3">
-          <p style={{ color: "white" }}>{item.title} </p>
-          <p style={{ color: "white" }}>Rated: {item.rating}</p>
-        </div>
-      </div>
-    );
-  });
-
-  const nowPlayingList = nowPlaying.slice(0, 4).map((item, index) => {
-    return (
-      <div className="col-md-3" key={index}>
-        <div className="card">
-          <Link to={`/movie/${item.id}`}>
-            <img className="img-fluid" src={item.poster} alt={item.title}></img>
-          </Link>
-        </div>
-        <div className="mt-3">
-          <p style={{ color: "white" }}>{item.title}</p>
-          <p style={{ color: "white" }}>Rated: {item.rating}</p>
-        </div>
-      </div>
-    );
-  });
-
-  const trendingList = trending.slice(0, 4).map((item, index) => {
-    return (
-      <div className="col-md-3" key={index}>
+      <div className="col-md-6" key={index}>
         <div className="card">
           <Link to={`/movie/${item.id}`}>
             <img
@@ -167,20 +135,52 @@ function Home() {
     );
   });
 
+  const nowPlayingList = nowPlaying.slice(0, 6).map((item, index) => {
+    return (
+      <div className="col-md-2" key={index}>
+        <div className="card">
+          <Link to={`/movie/${item.id}`}>
+            <img className="img-fluid" src={item.poster} alt={item.title}></img>
+          </Link>
+        </div>
+        <div className="mt-3">
+          <p style={{ color: "white" }}>{item.title}</p>
+          <p style={{ color: "white" }}>Rated: {item.rating}</p>
+        </div>
+      </div>
+    );
+  });
+
+  const topRatedList = topRated.slice(0, 6).map((item, index) => {
+    return (
+      <div className="col-md-2" key={index}>
+        <div className="card">
+          <Link to={`/movie/${item.id}`}>
+            <img className="img-fluid" src={item.poster} alt={item.title}></img>
+          </Link>
+        </div>
+        <div className="mt-3">
+          <p style={{ color: "white" }}>{item.title} </p>
+          <p style={{ color: "white" }}>Rated: {item.rating}</p>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div className="container">
       {/* <input type="text" placeholder="search" /> */}
-      <div className="row mt-3">
+      <div className="row mt-5">
         <div className="col">
           <div className="float-right">
             <i className="far fa-arrow-alt-circle-right"></i>
           </div>
-          <p className="font-weight-bold" style={{ color: "white" }}>
+          <p className="title" style={{ color: "white" }}>
             TRENDING
           </p>
         </div>
       </div>
-      <div className="row mt-3">{trendingList}</div>
+      <div className="row mt-2">{trendingList}</div>
 
       <div className="row mt-3">
         <div className="col">
@@ -190,7 +190,7 @@ function Home() {
 
       <div className="row mt-3">
         <div className="col">
-          <p className="font-weight-bold" style={{ color: "white" }}>
+          <p className="title" style={{ color: "white" }}>
             NOW PLAYING
           </p>
         </div>
@@ -203,7 +203,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="row mt-3">{nowPlayingList}</div>
+      <div className="row mt-2">{nowPlayingList}</div>
 
       <div className="row mt-3">
         <div className="col">
@@ -216,7 +216,7 @@ function Home() {
 
       <div className="row mt-3">
         <div className="col">
-          <p className="font-weight-bold" style={{ color: "white" }}>
+          <p className="title" style={{ color: "white" }}>
             TOP RATED MOVIES
           </p>
         </div>
@@ -229,9 +229,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="row mt-3">{topRatedList}</div>
-
-      <hr className="mb-5" style={{ borderTop: "1px solid #5a606b" }}></hr>
+      <div className="row mt-2">{topRatedList}</div>
     </div>
   );
 }

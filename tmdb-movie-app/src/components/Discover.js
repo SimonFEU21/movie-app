@@ -41,16 +41,16 @@ const Discover = () => {
       );
     });
 
-    const movieList = movieByGenre?.slice(0, 4).map((item, index) => {
+    const movieList = movieByGenre?.slice(0,9).map((item, index) => {
         return (
-          <div className="col-md-3" key={index}>
+          <div className="col-md-2" key={index}>
             <div className="card">
               <Link to={`/movie/${item.id}`}>
                 <img className="img-fluid" src={item.poster} alt={item.title}></img>
               </Link>
             </div>
-            <div className="mt-3">
-              <p style={{ fontWeight: "bolder" }}>{item.title}</p>
+            <div className="movieTitle mt-3">
+              <p>{item.title}</p>
             </div>
           </div>
         );
@@ -78,27 +78,27 @@ const Discover = () => {
 
   return (
     <div className="container">
-        <div className="row mt-3">
+        <div className="row mt-5">
         <div className="col">
         </div>
-          <p className="font-weight-bold" style={{ color: "white" }}>
+          <p className="title" style={{ color: "white" }}>
             Discover
           </p>
           <ul style={{ color: "white" }} >
       </ul>
       </div>
 
-      <div className="row mt-3">
+      <div className="row mt-1 ">
         <div className="col">
           <ul className="list-inline">{genreList}</ul>
         </div>
       </div>
       
-      <div className="row mt-3">
+      {/* <div className="row mt-3">
         <div className="col">
           <ul className="list-inline">{}</ul>
         </div>
-      </div>
+      </div> */}
 
   
 
@@ -111,7 +111,7 @@ const Discover = () => {
         </div>
       </div>
       <div className='row'>
-      {movieList || ( <div className="row mt-3" style={{ color: "white" }} >{} </div>)}
+      {movieList || ( <div style={{ color: "white" }}></div>)}
       </div>
     </div>
   )
