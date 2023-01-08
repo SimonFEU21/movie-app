@@ -51,7 +51,15 @@ function MovieDetail() {
     genresList = genres.map((g, i) => {
       return (
         <li className="list-inline-item" key={i}>
-          <button type="button" className="btn btn-outline-info">
+          <button
+            type="button"
+            className="btn btn-outline-info"
+            style={{
+              border: "1px solid white",
+              borderRadius: "100px",
+              cursor: "default",
+            }}
+          >
             {g.name}
           </button>
         </li>

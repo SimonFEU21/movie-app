@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.borderRadius {
+.searchBar {
   border-radius: 100px;
   padding: 20px;
   width: 385px;
@@ -25,5 +25,5 @@ line-height: 40px;
 }
 
 .btn-outline-info {
-  border-radius: 100px;
+  cursor: none;
 }

@@ -31,7 +31,7 @@ export function App() {
         <div className="container">
           <form onSubmit={submit}>
             <input
-              className="borderRadius"
+              className="searchBar"
               onChange={(e) => setSearchQuery(e.target.value)}
               type="text"
               placeholder="Search movie titles"

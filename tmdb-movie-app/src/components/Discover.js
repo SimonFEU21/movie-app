@@ -27,10 +27,11 @@ const Discover = () => {
   
   const genreList = genres.map((item, index) => {
       return (
+        
         <li className="list-inline-item" key={index}>
           <button
-            type="button"
-            className="btn btn-outline-info"
+            type="button" style={{border: '1px solid white', borderRadius: '100px'}}
+            className="btn btn-outline-info mt-2"
             onClick={() => {
               handleGenreClick(item.id);
             }}
@@ -88,7 +89,8 @@ const Discover = () => {
       </ul>
       </div>
 
-      <div className="row mt-1 ">
+
+      <div className="row mt-1">
         <div className="col">
           <ul className="list-inline">{genreList}</ul>
         </div>
