@@ -23,7 +23,7 @@ export function App() {
 
   return (
     <main className="row">
-      <div className="col-1 col-md-2 border-end">
+      <div className="col-1 col-md-2 border-end ">
         <Navbar />
       </div>
 
@@ -46,14 +46,14 @@ export function App() {
           <Route path="/discover" element={<Discover />} />
         </Routes>
 
-        <hr
+        {/* <hr
           className="mt-5 mb-4"
           style={{ borderTop: "1px solid #5a606b" }}
-        ></hr>
+        ></hr> */}
 
         <div
-          className="d-flex justify-content-center"
-          style={{ color: "white" }}
+          className="d-flex justify-content-center footNote"
+          style={{ color: "#838383" }}
         >
           This product uses the TMDb API but is not endorsed or certified by
           TMDb
