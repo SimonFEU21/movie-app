@@ -1,60 +1,53 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-// import { Link } from 'react-router-dom'
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { IoHome, IoCompassOutline, IoMenuOutline, IoCloseOutline } from "react-icons/io5";
+import { useState } from 'react';
 
-function Navbar() {
+
+const Navbar = ({isMobile}) => {
+
+  const [hamburgerMenu, setHamburgerMenu] = useState(false);
+
+
+  console.log(isMobile);
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-}
-
-export default Navbar;
+    <>
+      {isMobile ? (
+      <nav> 
+      <div className='d-flex justify-content-between align-items-center py-3 px-3'>
+           <h1 className='text-white text-center'>Movies</h1>
+          {hamburgerMenu ? (
+            <IoCloseOutline  onClick={ () => setHamburgerMenu(false)} size={55} color="white" />
+          ) : (
+            <IoMenuOutline onClick={ () => setHamburgerMenu(true)} size={55} color="white" />
+            )} 
+      </div>
+        { hamburgerMenu &&
+        <div className='d-flex flex-column z-3 position-absolute p-5 rounded-3 bg-dark w-75 h-100'>
+          <Link to="/"><IoHome /> Home</Link>
+          <Link to="/discover"><IoCompassOutline /> Discover</Link>
+        </div>
+        }
+      </nav>
 
 
 
+      ) : (
+      <div className={`col-1 border-end navBar ${isMobile && "hide"} `}>
+      <nav className='sideBar'>
+        <p>Movies</p>
+        <div className='d-flex flex-column'>
+          <Link to="/"><IoHome /> Home</Link>
+          <Link to="/discover"><IoCompassOutline /> Discover</Link>
+        </div>
+      </nav>
+      </div>
+    )}
+   </> 
 
+  )
+} 
 
+export default Navbar 
 
-
-
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-// // import styles from '../css/Navbar.module.css'
-
-// const Navbar = () => {
-//   return (
-//     <div className='navbar'> 
-//       <p style={{ color: "white" }}>Movies</p>
-//         <Link to="/">Home</Link>
-//         <Link to="/discover">Discover</Link>
-//     </div>
-    
-//   )
-// } 
-
-// export default Navbar
-// className={`row mt-5 display-flex justify-content-space-between ${styles.navbar}`}>
+// ${styles.navbar}`}>

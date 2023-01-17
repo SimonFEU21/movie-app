@@ -7,10 +7,23 @@ import Navbar from "./components/Navbar";
 import Discover from "./components/Discover";
 import { useState, useEffect } from "react";
 import Search from "./components/search/Search";
+import { useWindowSize } from "./hooks/useWindowSize";
 
 export function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+
+  const windowSize = useWindowSize();
+
+  const [mobileView, setMobileView] = useState(Boolean);
+  const [hamburgerMenu, setHamburgerMenu] = useState(Boolean);
+
+  useEffect(() => {
+    if (windowSize.width <= 1740) {
+      setMobileView(true);
+    } else setMobileView(false);
+    console.log(windowSize);
+  }, [windowSize]);
 
   const submit = (e) => {
     e.preventDefault();
@@ -23,10 +36,9 @@ export function App() {
 
   return (
     <main className="row">
-      <div className="col-1 col-md-2 border-end ">
-        <Navbar />
-      </div>
-
+      {/* <div className={`col-1 border-end `}> */}
+      <Navbar isMobile={mobileView} />
+      {/* </div> */}
       <div className="col-11 col-md-10 mt-5">
         <div className="container">
           <form onSubmit={submit}>
@@ -51,10 +63,7 @@ export function App() {
           style={{ borderTop: "1px solid #5a606b" }}
         ></hr> */}
 
-        <div
-          className="d-flex justify-content-center footNote"
-          style={{ color: "#838383" }}
-        >
+        <div className="footNote" style={{ color: "#838383" }}>
           This product uses the TMDb API but is not endorsed or certified by
           TMDb
         </div>

@@ -128,8 +128,8 @@ function Home() {
           </Link>
         </div>
         <div className="mt-3">
-          <p style={{ color: "white" }}>{item.title}</p>
-          <p style={{ color: "white" }}>Rated: {item.rating}</p>
+          {/* <p style={{ color: "white" }}>{item.title}</p> */}
+          {/* <p style={{ color: "white" }}>Rated: {item.rating}</p> */}
         </div>
       </div>
     );
@@ -144,8 +144,8 @@ function Home() {
           </Link>
         </div>
         <div className="mt-3">
-          <p style={{ color: "white" }}>{item.title}</p>
-          <p style={{ color: "white" }}>Rated: {item.rating}</p>
+          {/* <p style={{ color: "white" }}>{item.title}</p>
+          <p style={{ color: "white" }}>Rated: {item.rating}</p> */}
         </div>
       </div>
     );
@@ -176,7 +176,7 @@ function Home() {
             <i className="far fa-arrow-alt-circle-right"></i>
           </div>
           <p className="title" style={{ color: "white" }}>
-            TRENDING
+            Trending
           </p>
         </div>
       </div>
@@ -191,7 +191,7 @@ function Home() {
       <div className="row mt-3">
         <div className="col">
           <p className="title" style={{ color: "white" }}>
-            NOW PLAYING
+            Now playing
           </p>
         </div>
       </div>
@@ -217,7 +217,7 @@ function Home() {
       <div className="row mt-3">
         <div className="col">
           <p className="title" style={{ color: "white" }}>
-            TOP RATED MOVIES
+            Top rated movies
           </p>
         </div>
       </div>
