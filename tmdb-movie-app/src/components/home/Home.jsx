@@ -128,8 +128,10 @@ function Home() {
           </Link>
         </div>
         <div className="mt-3">
-          {/* <p style={{ color: "white" }}>{item.title}</p> */}
-          {/* <p style={{ color: "white" }}>Rated: {item.rating}</p> */}
+          <p style={{ color: "white" }}>
+            {item.title || item.name || item.original_name}
+          </p>
+          <p style={{ color: "white" }}>Rated: {item.rating}</p>
         </div>
       </div>
     );
@@ -144,8 +146,8 @@ function Home() {
           </Link>
         </div>
         <div className="mt-3">
-          {/* <p style={{ color: "white" }}>{item.title}</p>
-          <p style={{ color: "white" }}>Rated: {item.rating}</p> */}
+          <p style={{ color: "white" }}>{item.title}</p>
+          <p style={{ color: "white" }}>Rated: {item.rating}</p>
         </div>
       </div>
     );
@@ -168,7 +170,7 @@ function Home() {
   });
 
   return (
-    <div className="container">
+    <div className="containerr">
       {/* <input type="text" placeholder="search" /> */}
       <div className="row mt-5">
         <div className="col">

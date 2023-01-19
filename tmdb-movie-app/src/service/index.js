@@ -29,11 +29,13 @@ export const fetchMovies = async () => {
             id: m['id'],
             backPoster: posterUrl + m['backdrop_path'],
             popularity: m['popularith'],
-            title: m['title'],
+            title: m['title'] || m['name'] || m['original_name'] ,
             poster: posterUrl + m['poster_path'],
             overview: m['overview'],
             rating: m['vote_average'],
         }))
+
+        
 
         return modifiedData;
     } catch (error) { }
@@ -50,7 +52,7 @@ export const fetchSearchMovieUrl = async (query) => {
         const posterUrl = 'https://image.tmdb.org/t/p/original/';
         const modifiedData = res.data.results.map((m) => ({
             id: m['id'],
-            title: m['title'],
+            title: m['title'] || m['name'] || m['original_name'],
             poster: posterUrl + m['poster_path'],
 
         }))
@@ -145,6 +147,7 @@ export const fetchTrending = async () => {
             overview: m['overview'],
             rating: m['vote_average'],
         }))
+        console.log(modifiedData)
         return modifiedData;
     } catch (error) { }
 }

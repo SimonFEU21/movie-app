@@ -17,7 +17,7 @@ const Search = () => {
   const movieList = movies?.slice(0, 4).map((item, index) => {
     return (
       <div className="col-md-3" key={index}>
-        <div className="card">
+        <div className="searchCard">
           <Link to={`/movie/${item.id}`}>
             <img className="img-fluid" src={item.poster} alt={item.title}></img>
           </Link>
@@ -30,7 +30,7 @@ const Search = () => {
   });
 
   return (
-    <div className="container">
+    <div className="searchContainer">
       <div className="row mt-3">
         <div className="col"></div>
         <p className="font-weight-bold" style={{ color: "white" }}>

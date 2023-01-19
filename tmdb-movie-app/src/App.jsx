@@ -7,23 +7,16 @@ import Navbar from "./components/Navbar";
 import Discover from "./components/Discover";
 import { useState, useEffect } from "react";
 import Search from "./components/search/Search";
-import { useWindowSize } from "./hooks/useWindowSize";
+// import { useWindowSize } from "./hooks/useWindowSize";
 
 export function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
-  const windowSize = useWindowSize();
+  // const windowSize = useWindowSize();
 
-  const [mobileView, setMobileView] = useState(Boolean);
+  const [width, setWidth] = useState("");
   const [hamburgerMenu, setHamburgerMenu] = useState(Boolean);
-
-  useEffect(() => {
-    if (windowSize.width <= 1740) {
-      setMobileView(true);
-    } else setMobileView(false);
-    console.log(windowSize);
-  }, [windowSize]);
 
   const submit = (e) => {
     e.preventDefault();
@@ -34,12 +27,20 @@ export function App() {
     navigate(`/search/${searchQuery}`);
   };
 
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, [width]);
+
   return (
-    <main className="row">
-      {/* <div className={`col-1 border-end `}> */}
-      <Navbar isMobile={mobileView} />
+    <main className={`${width > 768 ? "d-flex" : ""}`}>
+      {
+        <div className={`${width > 768 ? "col-1 border-end" : ""}`}>
+          <Navbar />
+        </div>
+      }
+
       {/* </div> */}
-      <div className="col-11 col-md-10 mt-5">
+      <div className="col-11 col-md-10 mt-5 ">
         <div className="container">
           <form onSubmit={submit}>
             <input

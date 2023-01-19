@@ -9,6 +9,33 @@
   overflow-x: hidden;
 }
 
+.containerr {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  margin-left: 40px;
+  
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-right: auto;
+}
+
+.img-fluidd {
+  max-width: 100%;
+  height: auto;
+}
+.searchCard {
+  display: flex;
+  margin-top: 20px;
+}
+
 .searchBar {
   border-radius: 100px;
   padding: 20px;
@@ -46,6 +73,90 @@ position: sticky;
   box-shadow: 1px 0px 0px #686868;
 }
 
+.navContainer {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 5px 0px 5px;
+  
+}
+
+.navDesktop--Link {
+  top: 0;
+  left: 0;
+  position: fixed;
+  border: 1px solid red;
+  width: 10vw;
+  height: 100vh;
+  z-index: 1;
+  
+}
+
+.navDesktopContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 50vh;
+  align-items: center;
+  flex-direction: column;
+  
+ 
+}
+
+.navContainerModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #171717;
+  height: 100%;
+  width: 0;
+  z-index: 1;
+  transition: 0.3s all ease-in;
+}
+
+
+.navModalLink--container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  flex-direction: column;
+  top: 10%;
+  left: 0;
+  transform: translate(-25%, -30%);
+ 
+}
+
+.navModalLink--container a{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  
+  align-items: center;
+  text-align: left;
+  
+  text-align: center;
+  
+  transition: 0.3s;
+
+  color: #838383;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 25px;
+  margin: .5rem;
+}
+
+#discover {
+  margin-left: 28px;
+  font-size: 30px;
+}
+
+.navModalLink--container a:hover, .navModalLink--container a:focus{
+
+  color: #fff;
+
+}
+
 
 .sideBar  {
   display: flex;
@@ -57,11 +168,15 @@ position: sticky;
   margin-top: 2rem;
 }
 
-.sideBar p {
+.navDesktopContainer p {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   font-weight: 600;
-  font-size: 20px;
-  position: fixed;
+  font-size: 28px;
+  
 }
 
 .sideBar a {
@@ -82,8 +197,15 @@ position: sticky;
 }
 
 
-/* @media (max-width: 768px) {
- .navBar {
-  background-color: yellow;
+ @media (max-width: 768px) {
+ .navContainer {
+  display: flex;
   }
-}   */
+  .navDesktopContainer {
+    display: none;
+  }
+  .searchBar {
+    width: 350px;
+  }
+  
+}   
