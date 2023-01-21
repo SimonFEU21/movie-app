@@ -51,35 +51,16 @@ const Discover = () => {
               </Link>
             </div>
             <div className="movieTitle mt-3">
-              <p>{item.title}</p>
+              {/* <p>{item.title}</p> */}
             </div>
           </div>
         );
       });
 
 
-  // const discoverList = discover.slice(0, 4).map((item, index) => {
-  //   return (
-  //     <div className="col-md-3" key={index}>
-  //       <div className="card">
-  //         <Link to={`/movie/${item.id}`}>
-  //           <img className="img-fluid" src={item.poster} alt={item.title}></img>
-  //         </Link>
-  //       </div>
-  //       <div className="mt-3">
-  //         <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-  //         <p>Rated: {item.rating}</p>
-  //       </div>
-  //     </div>
-  //   );
-  // });
-
-
-
-
   return (
     <div className="container">
-        <div className="row mt-5">
+        <div className="row mt-5 ">
         <div className="col">
         </div>
           <p className="title" style={{ color: "white" }}>
@@ -90,21 +71,12 @@ const Discover = () => {
       </div>
 
 
-      <div className="row mt-1">
+      <div className="row mb-1">
         <div className="col">
-          <ul className="list-inline">{genreList}</ul>
+          <ul className="list-inline genreList">{genreList}</ul>
         </div>
       </div>
       
-      {/* <div className="row mt-3">
-        <div className="col">
-          <ul className="list-inline">{}</ul>
-        </div>
-      </div> */}
-
-  
-
-
      <div className="row mt-3">
         <div className="col">
           <div className="float-right">

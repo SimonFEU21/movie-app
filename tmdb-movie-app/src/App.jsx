@@ -7,13 +7,11 @@ import Navbar from "./components/Navbar";
 import Discover from "./components/Discover";
 import { useState, useEffect } from "react";
 import Search from "./components/search/Search";
-// import { useWindowSize } from "./hooks/useWindowSize";
+import { IoSearchOutline } from "react-icons/io5";
 
 export function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-
-  // const windowSize = useWindowSize();
 
   const [width, setWidth] = useState("");
   const [hamburgerMenu, setHamburgerMenu] = useState(Boolean);
@@ -38,7 +36,6 @@ export function App() {
           <Navbar />
         </div>
       }
-
       {/* </div> */}
       <div className="col-11 col-md-10 mt-5 ">
         <div className="container">
@@ -59,14 +56,11 @@ export function App() {
           <Route path="/discover" element={<Discover />} />
         </Routes>
 
-        {/* <hr
-          className="mt-5 mb-4"
-          style={{ borderTop: "1px solid #5a606b" }}
-        ></hr> */}
-
         <div className="footNote" style={{ color: "#838383" }}>
-          This product uses the TMDb API but is not endorsed or certified by
-          TMDb
+          <span>
+            This product uses the TMDb API but is not endorsed or certified by
+            TMDb
+          </span>
         </div>
       </div>
     </main>

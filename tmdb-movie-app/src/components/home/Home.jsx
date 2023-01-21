@@ -7,11 +7,10 @@ import {
   fetchTopratedMovie,
   fetchTrending,
 } from "../../service";
-import RBCarousel from "react-bootstrap-carousel";
-import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { Link } from "react-router-dom";
+import "../../App.css";
 // import ReactStars from "react-rating-stars-component";
-
+const posterBaseUrl = "https://image.tmdb.org/t/p/original/";
 function Home() {
   const [nowPlaying, setNowPlaying] = useState([]);
   const [trending, setTrending] = useState([]);
@@ -37,101 +36,35 @@ function Home() {
     setMovieByGenre(await fetchMovieByGenre(genre_id));
   };
 
-  // const movies = nowPlaying?.map((item, index) => {
-  //   return (
-  //     <div style={{ height: 500, width: "100%" }} key={index}>
-  //       <div className="carousel-center">
-  //         <img style={{ height: 600 }} src={item.backPoster} alt={item.title} />
-  //       </div>
-  //       <div className="carousel-center">
-  //         <i
-  //           className="far fa-play-circle"
-  //           style={{ fontSize: 95, color: "#f4c10f" }}
-  //         ></i>
-  //       </div>
-  //       <div
-  //         className="carousel-caption"
-  //         style={{ textAlign: "center", fontSize: 35 }}
-  //       >
-  //         {item.title}
-  //       </div>
-  //     </div>
-  //   );
-  // });
-
-  // const genreList = genres.map((item, index) => {
-  //   return (
-  //     <li className="list-inline-item" key={index}>
-  //       <button
-  //         type="button"
-  //         className="btn btn-outline-info"
-  //         onClick={() => {
-  //           handleGenreClick(item.id);
-  //         }}
-  //       >
-  //         {item.name}
-  //       </button>
-  //     </li>
-  //   );
-  // });
-
-  // const movieList = movieByGenre.slice(0, 4).map((item, index) => {
-  //   return (
-  //     <div className="col-md-3 col-sm-6" key={index}>
-  //       <div className="card">
-  //         <Link to={`/movie/${item.id}`}>
-  //           <img className="img-fluid" src={item.poster} alt={item.title}></img>
-  //         </Link>
-  //       </div>
-  //       <div className="mt-3">
-  //         <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-  //         {/* <p>Rated: {item.rating}</p> */}
-  //         {/* <ReactStars
-  //           count={item.rating}
-  //           size={20}
-  //           color1={"#f4c10f"}
-  //         ></ReactStars> */}
-  //       </div>
-  //     </div>
-  //   );
-  // });
-
-  // const trendingPersons = persons.slice(0, 4).map((p, i) => {
-  //   return (
-  //     <div className="col-md-3 text-center" key={i}>
-  //       <img
-  //         className="img-fluid rounded-circle mx-auto d-block"
-  //         src={p.profileImg}
-  //         alt={p.name}
-  //       ></img>
-  //       <p className="font-weight-bold text-center">{p.name}</p>
-  //       <p
-  //         className="font-weight-light text-center"
-  //         style={{ color: "#5a606b" }}
-  //       >
-  //         Trending for {p.known}
-  //       </p>
-  //     </div>
-  //   );
-  // });
-
   const trendingList = trending.slice(0, 2).map((item, index) => {
     return (
       <div className="col-md-6" key={index}>
         <div className="card">
           <Link to={`/movie/${item.id}`}>
-            <img
-              className="img-fluid"
-              src={item.backPoster}
-              alt={item.title}
-            ></img>
+            <div className="card">
+              <div className="poster-info-title-trending">
+                <p className="poster-title-trending">
+                  {item.title || item.original_name}
+                </p>
+                <p className="poster-year-trending">
+                  {item?.release_date?.slice(0, 4) ||
+                    item?.first_air_date?.slice(0, 4)}
+                </p>
+              </div>
+              <img
+                className="img-fluid"
+                src={posterBaseUrl + item.backdrop_path}
+                alt={item.title || item.original_name}
+              ></img>
+            </div>
           </Link>
         </div>
+
         <div className="mt-3">
-          <p style={{ color: "white" }}>
-            {item.title || item.name || item.original_name}
-          </p>
-          <p style={{ color: "white" }}>Rated: {item.rating}</p>
+          {/* <p style={{ color: "white" }}> */}
+          {/* {item.title || item.name || item.original_name} */}
+          {/* </p> */}
+          {/* <p style={{ color: "white" }}>Rated: {item.rating}</p> */}
         </div>
       </div>
     );
@@ -140,14 +73,25 @@ function Home() {
   const nowPlayingList = nowPlaying.slice(0, 6).map((item, index) => {
     return (
       <div className="col-md-2" key={index}>
-        <div className="card">
-          <Link to={`/movie/${item.id}`}>
-            <img className="img-fluid" src={item.poster} alt={item.title}></img>
-          </Link>
-        </div>
+        <Link to={`/movie/${item.id}`}>
+          <div className="card">
+            <div className="poster-info-title">
+              <p className="poster-title">{item.title || item.original_name}</p>
+              <p className="poster-title">
+                {item?.release_date?.slice(0, 4) ||
+                  item?.first_air_date?.slice(0, 4)}
+              </p>
+            </div>
+            <img
+              className="img-fluid"
+              src={posterBaseUrl + item.poster_path}
+              alt={item.title || item.original_name}
+            ></img>
+          </div>
+        </Link>
         <div className="mt-3">
-          <p style={{ color: "white" }}>{item.title}</p>
-          <p style={{ color: "white" }}>Rated: {item.rating}</p>
+          {/* <p style={{ color: "white" }}>{item.title}</p> */}
+          {/* <p style={{ color: "white" }}>Rated: {item.rating}</p> */}
         </div>
       </div>
     );
@@ -156,21 +100,32 @@ function Home() {
   const topRatedList = topRated.slice(0, 6).map((item, index) => {
     return (
       <div className="col-md-2" key={index}>
-        <div className="card">
-          <Link to={`/movie/${item.id}`}>
-            <img className="img-fluid" src={item.poster} alt={item.title}></img>
-          </Link>
-        </div>
+        <Link to={`/movie/${item.id}`}>
+          <div className="card">
+            <div className="poster-info-title">
+              <p className="poster-title">{item.title || item.original_name}</p>
+              <p className="poster-title">
+                {item?.release_date?.slice(0, 4) ||
+                  item?.first_air_date?.slice(0, 4)}
+              </p>
+            </div>
+            <img
+              className="img-fluid"
+              src={posterBaseUrl + item.poster_path}
+              alt={item.title || item.original_name}
+            ></img>
+          </div>
+        </Link>
         <div className="mt-3">
-          <p style={{ color: "white" }}>{item.title} </p>
-          <p style={{ color: "white" }}>Rated: {item.rating}</p>
+          {/* <p style={{ color: "white" }}>{item.title} </p>
+          <p style={{ color: "white" }}>Rated: {item.rating}</p> */}
         </div>
       </div>
     );
   });
 
   return (
-    <div className="containerr">
+    <div className="containeR">
       {/* <input type="text" placeholder="search" /> */}
       <div className="row mt-5">
         <div className="col">

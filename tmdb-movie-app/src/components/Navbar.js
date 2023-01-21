@@ -22,7 +22,6 @@ function Navbar() {
   return (
     <>
     <div className='navContainer'>
-
       <div className='navLogo'>
         <h1 className='text-white'>Movies</h1>
       </div>
@@ -31,15 +30,11 @@ function Navbar() {
      {!mobileMenu ? <IoMenuOutline  onClick={() => handleMenuOpen()} size={55} color="white" /> : <IoCloseOutline  onClick={() => handleMenuClose()} size={55} color="white" />}
      </div>
       <div className={`navContainerModal` } ref={navContainerWidth} >
-        
         <div className={`${!mobileMenu ? 'hide' : 'block' } navModalLink--container ` } >
           <Link to="/"><IoHome/> <span id="home" onClick={() => handleMenuClose()}>Home</span></Link>
           <Link to="/discover"><IoCompassOutline id="discover"/> <span  onClick={() => handleMenuClose()}>Discover</span></Link>
         </div>
       </div>
-
-      
-
     </div>
     
     <div className='navDesktopContainer'>
@@ -51,10 +46,7 @@ function Navbar() {
           <Link to="/discover"><IoCompassOutline /> Discover</Link>
         </div>
       </nav>
-      
     </div>
-
-    
     </>
   )
 }
