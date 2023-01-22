@@ -30,15 +30,14 @@ export function App() {
   }, [width]);
 
   return (
-    <main className={`${width > 768 ? "d-flex" : ""}`}>
-      {
-        <div className={`${width > 768 ? "col-1 border-end" : ""}`}>
-          <Navbar />
-        </div>
-      }
+    <main className="main--Container">
+      <div className="NavBar--Container">
+        <Navbar />
+      </div>
+
       {/* </div> */}
       <div className="col-11 col-md-10 mt-5 ">
-        <div className="container">
+        <div className="formContainer">
           <form onSubmit={submit}>
             <input
               className="searchBar"
@@ -55,13 +54,6 @@ export function App() {
           <Route path="/movie/:id" element={<MovieDetail />} />
           <Route path="/discover" element={<Discover />} />
         </Routes>
-
-        <div className="footNote" style={{ color: "#838383" }}>
-          <span>
-            This product uses the TMDb API but is not endorsed or certified by
-            TMDb
-          </span>
-        </div>
       </div>
     </main>
   );

@@ -2,9 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { fetchMovieDetail, fetchMovieVideos } from "../../service/";
 import Trailer from "../trailer/Trailer";
-import { Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import ReactPlayer from "react-player";
+import Footer from "../footer";
 
 function MovieDetail() {
   const params = useParams();
@@ -21,10 +20,6 @@ function MovieDetail() {
 
     fetchAPI();
   }, [setVideo, params.id]);
-
-  useEffect(() => {
-    console.log(video);
-  }, [video]);
 
   genres = detail.genres;
 
@@ -50,7 +45,7 @@ function MovieDetail() {
   }
 
   return (
-    <div className="container">
+    <div className="movie--detail">
       <div className="row mt-5">
         <Trailer id={video?.key} />
         <div style={{ width: "100%" }}>
@@ -78,6 +73,7 @@ function MovieDetail() {
           <p style={{ color: "white" }}>{detail.overview}</p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

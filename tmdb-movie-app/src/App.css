@@ -4,9 +4,25 @@
   box-sizing: border-box;
 }
 
-
- body {
+body {
   overflow-x: hidden;
+}
+
+.main--Container {
+  display: flex;
+  max-width: 95%;
+}
+
+.NavBar--Container {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  width: 278px;
+  max-height: 100%;
+  background: #171717;
+  box-shadow: 1px 0px 0px #686868;
+}
+
+.formContainer {
+  margin-left: 35px;
 }
 
 .containeR {
@@ -15,22 +31,38 @@
   align-items: left;
   flex-direction: column;
   margin-left: 40px;
-  
 }
 
 .searchContainer {
-  display: flex;
-  justify-content: center;
-  align-items: left;
+  margin-top: 3rem;
   flex-direction: column;
-  margin-left: 20px;
-  margin-right: auto;
+  justify-content: center;
+  height: 100vh;
+  max-width: 90%;
+  margin-left: 40px;
+  margin-top: 30px;
 }
 
-.img-fluidd {
-  max-width: 100%;
-  height: auto;
+.discover--Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 90%;
+  margin-left: 40px;
 }
+
+
+.img--container {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.img--container > img {
+  width: 300px;
+  height: 300px;
+} 
+
+
 .searchCard {
   display: flex;
   margin-top: 20px;
@@ -44,26 +76,26 @@
 }
 
 .title {
-font-weight: 700;
-font-size: 27px;
-line-height: 30px;
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 30px;
 }
 
 .movieTitle {
-color: #fff;
-font-weight: 700;
-font-size: 16px;
-line-height: 40px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 40px;
 }
 
 .footNote {
-font-weight: 400;
-font-size: 16px;
-line-height: 120px;
-margin-top: 10rem;
-display: flex;
-justify-content: center;
-position: sticky;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120px;
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  position: sticky;
 }
 
 .border-end {
@@ -86,7 +118,6 @@ position: sticky;
   width: 10vw;
   height: 100vh;
   z-index: 1;
-  
 }
 
 .navDesktopContainer {
@@ -95,8 +126,6 @@ position: sticky;
   gap: 50vh;
   align-items: center;
   flex-direction: column;
-  
- 
 }
 
 .navContainerModal {
@@ -110,21 +139,27 @@ position: sticky;
   transition: 0.3s all ease-in;
 }
 
-
 .navModalLink--container {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   flex-direction: column;
   top: 10%;
   left: 0;
   transform: translate(-25%, -30%);
- 
 }
 
-.navModalLink--container a{
+
+.movie--detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2rem;
+}
+
+.navModalLink--container a {
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -136,7 +171,7 @@ position: sticky;
   text-decoration: none;
   font-weight: 600;
   font-size: 25px;
-  margin: .5rem;
+  margin: 0.5rem;
 }
 
 #discover {
@@ -144,11 +179,12 @@ position: sticky;
   font-size: 30px;
 }
 
-.navModalLink--container a:hover, .navModalLink--container a:focus{
+.navModalLink--container a:hover,
+.navModalLink--container a:focus {
   color: #fff;
 }
 
-.sideBar  {
+.sideBar {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,7 +202,6 @@ position: sticky;
   color: #fff;
   font-weight: 600;
   font-size: 28px;
-  
 }
 
 .sideBar a {
@@ -174,11 +209,12 @@ position: sticky;
   text-decoration: none;
   font-weight: 600;
   font-size: 20px;
-  margin: .5rem;
+  margin: 0.5rem;
 }
 
- .sideBar a:hover {
+.sideBar a:hover {
   color: #fff;
+  text-decoration: none;
 }
 
 .hide {
@@ -188,7 +224,6 @@ position: sticky;
 .card {
   position: relative;
   display: inline-block;
-  
 }
 
 .poster-info-title {
@@ -203,18 +238,16 @@ position: sticky;
   color: white;
   display: flex;
   flex-direction: column;
-  
 }
 
 .poster-info-title {
+  text-align: center;
   color: transparent;
 }
 
-
-
-.poster-info-title:hover  {
+.poster-info-title:hover {
   background-color: rgba(0, 0, 0, 0.6);
-  color: white; 
+  color: white;
 }
 
 .tredingInfo {
@@ -229,22 +262,21 @@ position: sticky;
   justify-content: left;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  height: 20%;
+  height: 25%;
   font-size: 16px;
   color: white;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  padding:5px 0px 0px 15px;
+  padding-top: 15px;
+  padding-left: 20px;
 }
-
-
-
 
 /* Mediaquery */
 
- @media (max-width: 768px) {
- .navContainer {
-  display: flex;
+@media (max-width: 768px) {
+  .navContainer {
+    display: flex;
   }
   .navDesktopContainer {
     display: none;
@@ -258,6 +290,62 @@ position: sticky;
     line-height: 20px;
   }
 
+  .poster-info-title-trending {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-left: 0px;
+    align-items: center;
+  }
+
+  .NavBar--Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 20px;
+  }
+
+  .navLogo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .searchContainer {
+    height: 100%;
+  }
+
+  .img--container > img{
+    width: 100%;
+    height: 100%;
+  }
   
 
-}   
+  iFrame {
+    width: 30vw;
+    height: 50vh;
+  }
+
+  .movie--detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+  }
+  .main--Container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
