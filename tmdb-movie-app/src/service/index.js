@@ -1,9 +1,11 @@
 import axios from "axios";
-const apiKey = process.env.REACT_APP_API_KEY
+const apiKey = "d4da566d6202b6238607a02cf39337cf"
 const url = "https://api.themoviedb.org/3";
 const movieUrl = `${url}/movie`;
 const genreUrl = `${url}/genre/movie/list`;
 const getGenreUrl = `${url}/discover/movie`;
+
+console.log(process.env);
 
 const requests = {
   fetchNowPlaying: `/movie/now_playing?api_key=${apiKey}&language=en_us`,
