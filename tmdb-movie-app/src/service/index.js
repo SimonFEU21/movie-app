@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiKey = "d4da566d6202b6238607a02cf39337cf";
+const apiKey = process.env.REACT_APP_API_KEY
 const url = "https://api.themoviedb.org/3";
 const movieUrl = `${url}/movie`;
 const genreUrl = `${url}/genre/movie/list`;
@@ -53,16 +53,6 @@ export const fetchMovieByGenre = async (genre_id) => {
         with_genres: genre_id,
       },
     });
-    const posterUrl = "https://image.tmdb.org/t/p/original/";
-    const modifiedData = data["results"].map((m) => ({
-      id: m["id"],
-      backPoster: posterUrl + m["backdrop_path"],
-      popularity: m["popularith"],
-      title: m["title"],
-      poster: posterUrl + m["poster_path"],
-      overview: m["overview"],
-      rating: m["vote_average"],
-    }));
 
     return data.results;
   } catch (error) {}
