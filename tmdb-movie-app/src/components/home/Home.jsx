@@ -34,7 +34,7 @@ function Home() {
         amount={4}
       />
       <Row
-        title="Comedy Movie"
+        title="Comedy Movies"
         fetchURL={requests.fetchComedyMovies}
         BigSize={false}
         amount={6}
