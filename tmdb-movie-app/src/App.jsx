@@ -5,16 +5,12 @@ import Home from "./components/home/Home";
 import MovieDetail from "./components/moviedetail/MovieDetail";
 import Navbar from "./components/Navbar";
 import Discover from "./components/Discover";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Search from "./components/search/Search";
-import { IoSearchOutline } from "react-icons/io5";
 
 export function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-
-  const [width, setWidth] = useState("");
-  const [hamburgerMenu, setHamburgerMenu] = useState(Boolean);
 
   const submit = (e) => {
     e.preventDefault();
@@ -25,13 +21,13 @@ export function App() {
     navigate(`/search/${searchQuery}`);
   };
 
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, [width]);
-
   return (
     <main className="main--Container">
       <div className="NavBar--Container">
+        <Navbar />
+      </div>
+
+      <div className="NavBar--Container-Mobile">
         <Navbar />
       </div>
 

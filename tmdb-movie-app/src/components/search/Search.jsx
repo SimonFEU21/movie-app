@@ -14,7 +14,7 @@ const Search = () => {
           title="Search Result"
           fetchURL={requests.fetchSearchMovie + params?.query}
           BigSize={false}
-          amount={10}
+          amount={24}
         />
       </div>
       <Footer />

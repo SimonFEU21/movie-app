@@ -11,7 +11,7 @@ function Card({ movieData }) {
   }
 
   return (
-    <div className="col-md-2">
+    <div className="col-sm-4 col-md-4 col-lg-2 col-xl-2">
       <Link to={`/movie/${movieData.id}`}>
         <div className="card">
           <div className="poster-info-title">

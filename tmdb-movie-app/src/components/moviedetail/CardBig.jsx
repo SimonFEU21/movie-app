@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const posterBaseUrl = "https://image.tmdb.org/t/p/original/";
 function CardBig({ movieData }) {
   return (
-    <div className="col-md-6">
+    <div className="col-md-6 col-sm-6">
       <div className="card">
         <Link to={`/movie/${movieData.id}`}>
           <div className="card">
