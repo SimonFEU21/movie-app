@@ -16,11 +16,15 @@ const requests = {
   fetchTrending: `/trending/all/week?api_key=${apiKey}&language=en_us`,
   fetchNetflixOriginals: `/discover/tv?api_key=${apiKey}&with_networks=213`,
   fetchTopRated: `/movie/top_rated?api_key=${apiKey}&language=en_us`,
-  fetchActionMovies: `/discover/movie?api_key=${apiKey}&with_genres=28`,
+  fetchTvMovies: `/discover/movie?api_key=${apiKey}&with_genres=10770`,
   fetchComedyMovies: `/discover/movie?api_key=${apiKey}&with_genres=35`,
-  fetchHorrorMovies: `/discover/movie?api_key=${apiKey}&with_genres=27`,
+  fetchSciFiMovies: `/discover/movie?api_key=${apiKey}&with_genres=878`,
   fetchRomanceMovies: `/discover/movie?api_key=${apiKey}&with_genres=10749`,
   fetchDocumentaries: `/discover/movie?api_key=${apiKey}&with_genres=99`,
+  fetchWarMovies: `/discover/movie?api_key=${apiKey}&with_genres=10752`,
+  fetchAnimatedMovies: `/discover/movie?api_key=${apiKey}&with_genres=16`,
+  fetchFantasyMovies: `/discover/movie?api_key=${apiKey}&with_genres=14`,
+  fetchFamilyMovies: `/discover/movie?api_key=${apiKey}&with_genres=10751`,
 };
 
 export default requests;

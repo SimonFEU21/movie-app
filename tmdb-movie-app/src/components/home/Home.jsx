@@ -39,23 +39,36 @@ function Home() {
         BigSize={false}
         amount={6}
       />
+
       <Row
-        title="Documentaries"
-        fetchURL={requests.fetchDocumentaries}
+        title="War Movies"
+        fetchURL={requests.fetchWarMovies}
         BigSize={false}
         amount={6}
       />
       <Row
-        title="Horror Movies"
-        fetchURL={requests.fetchHorrorMovies}
+        title="Sci-fi Movies"
+        fetchURL={requests.fetchSciFiMovies}
         BigSize={false}
         amount={6}
       />
       <Row
-        title="Action Movies"
-        fetchURL={requests.fetchActionMovies}
+        title="Tv Movies"
+        fetchURL={requests.fetchTvMovies}
         BigSize={true}
-        amount={2}
+        amount={6}
+      />
+      <Row
+        title="Animated Movies"
+        fetchURL={requests.fetchAnimatedMovies}
+        BigSize={false}
+        amount={6}
+      />
+      <Row
+        title="Fantasy Movies"
+        fetchURL={requests.fetchFantasyMovies}
+        BigSize={false}
+        amount={6}
       />
       <Footer />
     </div>
